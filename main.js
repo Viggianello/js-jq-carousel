@@ -58,3 +58,7 @@ $('.prev').click(function() {
         $('.fa-circle:last-child').addClass('active');
     }
 });
+
+$('.fa-circle').click(function() {
+    alert('hai cliccato su un pallino');
+})

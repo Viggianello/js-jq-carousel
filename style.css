@@ -57,6 +57,11 @@
     bottom: 10px;
 }
 
+.bullet i{
+    cursor: pointer;
+    margin: 0 5px;
+}
+
 .fa-circle.active{
     color: white;
 }
