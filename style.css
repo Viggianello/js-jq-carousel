@@ -37,6 +37,7 @@
 .slide{
     width: 90%;
     text-align: center;
+    position: relative;
 }
 
 .slide img{
@@ -47,6 +48,13 @@
 
 .slide img.active{
     display:inline-block;
+}
+
+.bullet{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
 }
 
 .fa-circle.active{
