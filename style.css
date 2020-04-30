@@ -48,3 +48,7 @@
 .slide img.active{
     display:inline-block;
 }
+
+.fa-circle.active{
+    color: white;
+}
