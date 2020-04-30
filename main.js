@@ -28,7 +28,6 @@ $('.next').click(function() {
     }
 });
 
-
 // intercetto il click sulla classe prev
 $('.prev').click(function() {
     // recupero l'img che ha la classe active in questo momento
@@ -59,6 +58,17 @@ $('.prev').click(function() {
     }
 });
 
-$('.fa-circle').click(function() {
-    alert('hai cliccato su un pallino');
-})
+// lavora sul pallino che cliccherò
+$('.bullet .fa-circle').click(function() {
+    // console.log($(this).index());
+    // recupera l indice del pallino cliccato
+    var indice_corrente = $(this).index();
+    // seleziono l immagine futura basandomi sull indice del pallino perchè sono parallele n immagini = n pallini
+    var elemento_corrente = $('.slide img').eq(indice_corrente);
+
+    $('img.active').removeClass('active');
+    elemento_corrente.addClass('active');
+
+    $('.fa-circle.active').removeClass('active');
+    $(this).addClass('active');
+});
