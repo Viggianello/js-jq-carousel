@@ -1,5 +1,5 @@
 // intercetto il click sulla classe next
-$('next').click(function() {
+$('.next').click(function() {
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
     // tolgo la classe active dall'img corrente
@@ -20,7 +20,7 @@ $('next').click(function() {
 
 
 // intercetto il click sulla classe prev
-$('prev').click(function() {
+$('.prev').click(function() {
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
     // tolgo la classe active dall'img corrente
