@@ -76,4 +76,4 @@ $('.bullet .fa-circle').click(function() {
 });
 
 // l'autoplay Slider, ossia che automaticamente ogni 3 secondi cambi slide e venga visualizzata l'immagine successiva.
-// quando clicco sul > entra il loop che mi manda avanti la foto ogni 3 secondi all infinito
+// quando clicco sul >,ossia next, entra il loop che mi manda avanti la foto ogni 3 secondi all'infinito
