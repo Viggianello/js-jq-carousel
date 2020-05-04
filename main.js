@@ -1,7 +1,5 @@
 // intercetto il click sulla classe next
-$('.next').click(function(click_next) {
-    clock = setInterval(function() {
-
+function click_next() {
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
     // recuro il pallino che ha la classe active in questo momento
@@ -28,11 +26,14 @@ $('.next').click(function(click_next) {
         // non c'è un pallino succesivo => riparto dal primo
         $('.fa-circle:first-child').addClass('active');
     }
-}, 3000)});
+}
+$('.next').click(function () {
+    click_next();
+});
 
+// }clock = setInterval((click_next(), 3000));
 // intercetto il click sulla classe prev
-$('.prev').click(function(click_prev) {
-    clock_reverse = setInterval(function() {
+function click_prev() {
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
     // recupero il pallino che ha la classe active in questo momento
@@ -59,10 +60,24 @@ $('.prev').click(function(click_prev) {
         // non c'è un pallino precedente => riparto dall'ultimo
         $('.fa-circle:last-child').addClass('active');
     }
-    // if (.stop_prev.active) {
-    //
-    // }
-}, 3000)});
+}
+$('.prev').click(function() {
+    click_prev();
+});
+
+// creo il loop delle inmmagini in avanti
+function clock() {
+    clock = setInterval(click_next,
+    3000);}
+
+// creo il loop delle inmmagini indietro
+function clock_reverse() {
+    clock_reverse = setInterval(click_prev, 3000);}
+// var clock_reverse = setInterval((click_prev(), 3000));
+
+// creo un tasto play e un tasto play_reverce a cui metto le funzioni per creare il lup
+$('.bottoni .play').click(clock);
+$('.bottoni .play_reverce').click(clock_reverse);
 
 // lavora sul pallino che cliccherò
 $('.bullet .fa-circle').click(function() {
@@ -80,14 +95,15 @@ $('.bullet .fa-circle').click(function() {
 
 });
 // creo un pulsante che faccia terminare il loop infinito delle immagini che scorrono sia se azionate con .next che con .prev
-$('.play .stop_next').click(function() {
+$('.bottoni .stop_next').click(function() {
     clearInterval(clock);
+    console.log(clock);
     // clearInterval(clock_reverse);
     // $( ".next" ).off(click_next);
     // $( ".prev" ).off(click_prev);
 });
 
-$('.play .stop_prev').click(function() {
+$('.bottoni .stop_prev').click(function() {
     // .addClass(active)
     // dare uno stato in maniera tale da verificare tale e poi metter clearinterval se ha questo stato
     clearInterval(clock_reverse);
