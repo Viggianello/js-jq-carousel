@@ -1,5 +1,7 @@
 // intercetto il click sulla classe next
 $('.next').click(function() {
+    var clock = setInterval(function() {
+
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
     // recuro il pallino che ha la classe active in questo momento
@@ -26,7 +28,7 @@ $('.next').click(function() {
         // non c'è un pallino succesivo => riparto dal primo
         $('.fa-circle:first-child').addClass('active');
     }
-});
+}, 3000)});
 
 // intercetto il click sulla classe prev
 $('.prev').click(function() {
@@ -72,3 +74,6 @@ $('.bullet .fa-circle').click(function() {
     $('.fa-circle.active').removeClass('active');
     $(this).addClass('active');
 });
+
+// l'autoplay Slider, ossia che automaticamente ogni 3 secondi cambi slide e venga visualizzata l'immagine successiva.
+// quando clicco sul > entra il loop che mi manda avanti la foto ogni 3 secondi all infinito
