@@ -32,7 +32,7 @@ $('.next').click(function(click_next) {
 
 // intercetto il click sulla classe prev
 $('.prev').click(function(click_prev) {
-    var clock_reverse = setInterval(function() {
+    clock_reverse = setInterval(function() {
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
     // recupero il pallino che ha la classe active in questo momento
@@ -77,8 +77,15 @@ $('.bullet .fa-circle').click(function() {
 
 });
 // creo un pulsante che faccia terminare il loop infinito delle immagini che scorrono sia se azionate con .next che con .prev
-$('.play').click(function() {
+$('.play stop_next').click(function() {
     clearInterval(clock);
+    // clearInterval(clock_reverse);
+    // $( ".next" ).off(click_next);
+    // $( ".prev" ).off(click_prev);
+});
+
+$('.play stop_prev').click(function() {
+    // clearInterval(clock);
     clearInterval(clock_reverse);
     // $( ".next" ).off(click_next);
     // $( ".prev" ).off(click_prev);
