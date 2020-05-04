@@ -65,3 +65,9 @@
 .fa-circle.active{
     color: white;
 }
+
+button{
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
