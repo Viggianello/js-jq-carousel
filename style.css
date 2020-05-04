@@ -70,4 +70,6 @@ button{
     background-color: black;
     color: white;
     padding: 5px;
+    border: solid 1px gold;
+    margin: 0 10px;
 }

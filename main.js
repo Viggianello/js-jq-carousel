@@ -59,6 +59,9 @@ $('.prev').click(function(click_prev) {
         // non c'è un pallino precedente => riparto dall'ultimo
         $('.fa-circle:last-child').addClass('active');
     }
+    // if (.stop_prev.active) {
+    //
+    // }
 }, 3000)});
 
 // lavora sul pallino che cliccherò
@@ -77,18 +80,17 @@ $('.bullet .fa-circle').click(function() {
 
 });
 // creo un pulsante che faccia terminare il loop infinito delle immagini che scorrono sia se azionate con .next che con .prev
-$('.play stop_next').click(function() {
+$('.play .stop_next').click(function() {
     clearInterval(clock);
     // clearInterval(clock_reverse);
     // $( ".next" ).off(click_next);
     // $( ".prev" ).off(click_prev);
 });
 
-$('.play stop_prev').click(function() {
-    // clearInterval(clock);
+$('.play .stop_prev').click(function() {
+    // .addClass(active)
+    // dare uno stato in maniera tale da verificare tale e poi metter clearinterval se ha questo stato
     clearInterval(clock_reverse);
-    // $( ".next" ).off(click_next);
-    // $( ".prev" ).off(click_prev);
 });
 // l'autoplay Slider, ossia che automaticamente ogni 3 secondi cambi slide e venga visualizzata l'immagine successiva.
 // quando clicco sul >,ossia next, entra nel loop che mi manda avanti la foto ogni 3 secondi all'infinito
