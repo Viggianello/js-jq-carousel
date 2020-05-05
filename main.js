@@ -1,4 +1,5 @@
 // intercetto il click sulla classe next
+// creo una funzione per il click next che posso poi riusare per fare un setInterval ,ossia un loop, per mandare avanti le immagini
 function click_next() {
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
@@ -14,7 +15,7 @@ function click_next() {
     var pallino_successivo =pallino_corrente.next('.fa-circle');
     // verifico che esista un img successivo
     if (img_successiva.length !=0) {
-        // c'è una img successiva
+        // c'è una img successiva dunque anche un pallino essendo associati
         // metto la classe active all'immagine img_successiva
         img_successiva.addClass('active');
         // metto la classe active al pallino successivo
@@ -27,12 +28,13 @@ function click_next() {
         $('.fa-circle:first-child').addClass('active');
     }
 }
-$('.next').click(function () {
+// intercetto veramente il click sulla classe next
+$('.next').click(function() {
     click_next();
 });
 
-// }clock = setInterval((click_next(), 3000));
 // intercetto il click sulla classe prev
+// creo una funzione per il click prev che posso poi riusare per fare un setInterval ,ossia un loop, per mandare indietro le immagini
 function click_prev() {
     // recupero l'img che ha la classe active in questo momento
     var img_corrente = $('img.active');
@@ -48,7 +50,7 @@ function click_prev() {
     var pallino_precedente =pallino_corrente.prev('.fa-circle');
     // verifico che esista un img precedente
     if (img_precedente.length !=0) {
-        // c'è una img precedente
+        // c'è una img precedente dunque anche un pallino essendo associati
         // metto la classe active all'immagine img_precedente
         img_precedente.addClass('active');
         // metto la classe active al pallino precedente
@@ -61,54 +63,47 @@ function click_prev() {
         $('.fa-circle:last-child').addClass('active');
     }
 }
+// intercetto veramente il click sulla classe prev
 $('.prev').click(function() {
     click_prev();
 });
 
-// creo il loop delle inmmagini in avanti
+// creo il loop delle immagini in avanti
 function clock() {
-    clock = setInterval(click_next,
-    3000);}
+    clock = setInterval(click_next, 3000);}
 
-// creo il loop delle inmmagini indietro
+// creo il loop delle immagini indietro
 function clock_reverse() {
     clock_reverse = setInterval(click_prev, 3000);}
-// var clock_reverse = setInterval((click_prev(), 3000));
+// uso delle variabili globali in maniera tale da poterle richiamare per creare dei pulsanti che fermerebbero tali loop
 
-// creo un tasto play e un tasto play_reverce a cui metto le funzioni per creare il lup
+// creo un tasto play, per far partire il loop in avanti, e un tasto play_reverce, per far partire il loop indietro, a cui metto le funzioni per creare i loop associati
 $('.bottoni .play').click(clock);
 $('.bottoni .play_reverce').click(clock_reverse);
 
-// lavora sul pallino che cliccherò
+// lavoro sul pallino che cliccherò
 $('.bullet .fa-circle').click(function() {
-    // console.log($(this).index());
-    // recupera l indice del pallino cliccato
+    // recupera l'indice del pallino cliccato, ossia questo= this avendoci cliccato da azione soprastante, usando la funzione index
     var indice_corrente = $(this).index();
-    // seleziono l immagine futura basandomi sull indice del pallino perchè sono parallele n immagini = n pallini
+    // seleziono l'immagine futura basandomi sull'indice del pallino, perchè sono parallele, numero immagini = numero pallini, usando la funzione .eq() che 'Reduce the set of matched elements to the one at the specified index'.
     var elemento_corrente = $('.slide img').eq(indice_corrente);
-
+// rimuovo la classe che rende visibile l'immagine a schermo per darla all'immagine futura ossia quella associata al pallino che ho cliccato
     $('img.active').removeClass('active');
     elemento_corrente.addClass('active');
-
+// rimuovo la classe che rende visibile il pallino in bianco a schermo per darla al pallino che ho cliccato
     $('.fa-circle.active').removeClass('active');
     $(this).addClass('active');
 
 });
-// creo un pulsante che faccia terminare il loop infinito delle immagini che scorrono sia se azionate con .next che con .prev
+// creo due pulsanti che facciano terminare i loop infiniti delle immagini che scorrono sia se azionate con .play,in primis, che con .play_reverce,in secondo.
 $('.bottoni .stop_next').click(function() {
     clearInterval(clock);
-    console.log(clock);
-    // clearInterval(clock_reverse);
-    // $( ".next" ).off(click_next);
-    // $( ".prev" ).off(click_prev);
 });
 
 $('.bottoni .stop_prev').click(function() {
-    // .addClass(active)
-    // dare uno stato in maniera tale da verificare tale e poi metter clearinterval se ha questo stato
     clearInterval(clock_reverse);
 });
-// l'autoplay Slider, ossia che automaticamente ogni 3 secondi cambi slide e venga visualizzata l'immagine successiva.
-// quando clicco sul >,ossia next, entra nel loop che mi manda avanti la foto ogni 3 secondi all'infinito
-// quando clicco sul <,ossia prev, entra nel loop che mi manda indietro la foto ogni 3 secondi all'infinito
-// se clicco due volte fa un salto e si impostano due loop
+// Consegna esercizio: l'autoplay Slider, ossia che automaticamente ogni 3 secondi cambi slide e venga visualizzata l'immagine successiva.
+// quando clicco sul play > entra nel loop che mi manda avanti la foto ogni 3 secondi all'infinito a patto che non clicco su stop > per fermare il tutto.
+// quando clicco sul play revenrce < entra nel loop che mi manda indietro la foto ogni 3 secondi all'infinito a patto che non clicco su stop < per fermare il tutto.
+// PROBLEMA: se clicco due o più volte sul pulsante play > o play_reverce < fa uno più salti e si impostano tanti loop pari ai click che faccio, dunque per blocccarlo non riesco più; l'unica cosa posso fare e levare un loop cliccando sul pulsante di stop associato, perchè il multi-click su tale pulsante non funziona.
