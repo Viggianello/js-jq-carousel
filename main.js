@@ -29,9 +29,7 @@ function click_next() {
     }
 }
 // intercetto veramente il click sulla classe next
-$('.next').click(function() {
-    click_next();
-});
+$('.next').click(click_next);
 
 // intercetto il click sulla classe prev
 // creo una funzione per il click prev che posso poi riusare per fare un setInterval ,ossia un loop, per mandare indietro le immagini
@@ -64,9 +62,7 @@ function click_prev() {
     }
 }
 // intercetto veramente il click sulla classe prev
-$('.prev').click(function() {
-    click_prev();
-});
+$('.prev').click(click_prev);
 
 // creo il loop delle immagini in avanti
 function clock() {
